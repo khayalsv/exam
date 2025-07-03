@@ -5,6 +5,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { MyPreset } from './mypreset';
+import { provideHttpClient } from '@angular/common/http';
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export const appConfig: ApplicationConfig = {
@@ -13,12 +14,13 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
+    provideHttpClient(),
     providePrimeNG({
       theme: {
         preset: MyPreset,
         options: {
           darkModeSelector: '.dark',
-         
+
         }
       }
     })

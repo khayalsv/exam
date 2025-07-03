@@ -1,0 +1,30 @@
+[
+  {
+    "code": "MAT",
+    "name": "Riyaziyyat",
+    "schoolClass": 10,
+    "teacherFirstName": "Elvin",
+    "teacherLastName": "Quliyev"
+  },
+  {
+    "code": "AZD",
+    "name": "Azərbaycan Dili",
+    "schoolClass": 10,
+    "teacherFirstName": "Leyla",
+    "teacherLastName": "Məmmədova"
+  },
+  {
+    "code": "FIZ",
+    "name": "Fizika",
+    "schoolClass": 11,
+    "teacherFirstName": "Rəşad",
+    "teacherLastName": "Əliyev"
+  },
+  {
+    "code": "KIM",
+    "name": "Kimya",
+    "schoolClass": 9,
+    "teacherFirstName": "Günay",
+    "teacherLastName": "Həsənova"
+  }
+]

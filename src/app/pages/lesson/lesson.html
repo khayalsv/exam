@@ -1,1 +1,7 @@
-<p>lesson works!</p>
+<h3>Dərslər</h3>
+<ul>
+  <li *ngFor="let subject of subjects">
+    {{ subject.code }} - {{ subject.name }} ({{ subject.schoolClass }}-ci sinif) -
+    Müəllim: {{ subject.teacherFirstName }} {{ subject.teacherLastName }}
+  </li>
+</ul>
