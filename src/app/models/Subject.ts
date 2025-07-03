@@ -1,9 +1,7 @@
-export class Subject {
-  constructor(
-    public subjectCode: string,
-    public name: string,
-    public schoolClass: number,
-    public teacherFirstName: string,
-    public teacherLastName: string
-  ) {}
+export interface Subject {
+  code: string;
+  name: string;
+  schoolClass: number;
+  teacherFirstName: string;
+  teacherLastName: string;
 }
