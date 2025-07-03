@@ -14,7 +14,7 @@ import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonModule, AgGridAngular,
+  imports: [ButtonModule,
     RouterOutlet, ToggleButtonModule, DividerModule, ButtonModule,
     CardModule, CommonModule, InputTextModule, ReactiveFormsModule, FormsModule, MenubarModule
   ],
