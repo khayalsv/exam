@@ -33,44 +33,24 @@ export class Layout {
   onVisible() {
     this.visible = !this.visible;
   }
-  ngOnInit() {
 
+  ngOnInit() {
     this.items = [
       {
-        label: 'About',
-        icon: 'pi pi-address-book',
+        label: 'Exam',
+        icon: 'pi pi-file-edit',
         routerLink: ['/'],
       },
       {
-        label: 'To Do List',
-        icon: 'pi pi-list',
-        routerLink: ['/to-do-list'],
+        label: 'Student',
+        icon: 'pi pi-address-book',
+        routerLink: ['/student'],
       },
       {
-        label: 'Weather',
-        icon: 'pi pi-cloud',
-        routerLink: ['/weather'],
-      },
-      {
-        label: 'Blog',
+        label: 'Lesson',
         icon: 'pi pi-pen-to-square',
-        routerLink: ['/blog'],
+        routerLink: ['/lesson'],
       },
-      {
-        label: 'Map',
-        icon: 'pi pi-map',
-        routerLink: ['/map'],
-      },
-      {
-        label: 'Chat',
-        icon: 'pi pi-comment',
-        routerLink: ['/chat'],
-      },
-      {
-        label: 'Actions',
-        icon: 'pi pi-file-edit',
-        routerLink: ['/actions'],
-      }
     ];
   }
 }
