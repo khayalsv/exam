@@ -5,7 +5,7 @@ import { CardModule } from 'primeng/card';
 import { StudentService } from '../../core/services/student-service';
 import { Student } from '../../core/models/Student';
 import { Dialog } from 'primeng/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
@@ -33,7 +33,14 @@ export class StudentComponent {
     });
   }
 
-  showDialog() {
+  onAdd(): void {
+    this.findStudent = {
+      id: 0,
+      firstName: '',
+      lastName: '',
+      schoolClass: 1,
+      gender: 'male'
+    };
     this.visible = true;
   }
 
@@ -43,20 +50,56 @@ export class StudentComponent {
     this.findStudent = student ? { ...student } : {};
   }
 
-  onSubmit(): void {
-    if (!this.findStudent || !this.findStudent.id) return;
+  private generateNewId(): number {
+    const maxId = this.students.length > 0 ? Math.max(...this.students.map(s => s.id)) : 0;
+    return maxId + 1;
+  }
 
-    const index = this.students.findIndex(s => s.id === this.findStudent.id);
-    if (index !== -1) {
-      this.students[index] = { ...this.findStudent };
+  onSubmit(studentForm: NgForm): void {
+    if (!this.findStudent) return;
+
+    if (this.findStudent.id) {
+
+      const index = this.students.findIndex(s => s.id === this.findStudent.id);
+      if (index !== -1) {
+        this.students[index] = { ...this.findStudent };
+      }
+
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Uğurlu əməliyyat',
+        detail: 'Şagirdin məlumatı yeniləndi'
+      });
+    } else {
+
+      const newId = this.generateNewId();
+      const newStudent = { ...this.findStudent, id: newId };
+      this.students.push(newStudent);
+
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Uğurlu əməliyyat',
+        detail: 'Yeni şagird əlavə olundu'
+      });
     }
 
+    studentForm.resetForm();
+    this.findStudent = null;
     this.visible = false;
+  }
+
+  onDelete(id: number): void {
+    this.students = this.students.filter(student => student.id !== id);
 
     this.messageService.add({
-      severity: 'success',
-      summary: 'Uğurlu əməliyyat',
-      detail: 'Şagirdin məlumatı yeniləndi'
+      severity: 'warn',
+      summary: 'Silindi',
+      detail: `ID-si ${id} olan şagird silindi`
     });
+
+    if (this.findStudent?.id === id) {
+      this.visible = false;
+      this.findStudent = null;
+    }
   }
 }

@@ -1,5 +1,8 @@
 <section class="p-5">
-  <h3 class="text-xl mb-3">👩‍🎓👨‍🎓 Şagirdlər</h3>
+  <div class="flex gap-3 mb-3">
+    <h3 class="text-xl mb-3">👩‍🎓👨‍🎓 Şagirdlər</h3>
+    <p-button label="Əlavə et" icon="pi pi-plus" size="small" (onClick)="onAdd()" />
+  </div>
 
   <div class="flex flex-wrap gap-3">
     <p-card *ngFor="let student of students" [style]="{
@@ -32,9 +35,13 @@
       </ng-template>
 
       <ng-template #content>
-        <div class="mt-auto flex justify-center">
-          <button pButton type="button" label="Detallar" icon="pi pi-info-circle" class="p-button-sm p-button-info"
+        <div class="flex justify-between gap-3">
+          <button pButton type="button" label="Detal" icon="pi pi-info-circle" class="p-button-sm p-button-info"
             (click)="onEdit(student.id)">
+          </button>
+
+          <button pButton type="button" label="Sil" icon="pi pi-trash" class="p-button-sm p-button-danger"
+            (click)="onDelete(student.id)">
           </button>
         </div>
       </ng-template>
@@ -45,8 +52,7 @@
 <p-dialog header="Şagirdin Məlumatı" [(visible)]="visible" [modal]="true"
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [draggable]="false" [resizable]="false">
 
-  <form *ngIf="findStudent" #studentForm="ngForm" (ngSubmit)="onSubmit()" class="mt-3 p-3">
-
+  <form *ngIf="findStudent" #studentForm="ngForm" (ngSubmit)="onSubmit(studentForm)" class="mt-3 p-3">
     <!-- Ad -->
     <p-floatlabel class="mb-4" variant="on">
       <input pSize="small" id="firstName" name="firstName" pInputText type="text" [(ngModel)]="findStudent.firstName"
@@ -80,7 +86,7 @@
       <!-- Cins -->
       <p-floatlabel class="mb-2" variant="on">
         <p-select size="small" id="gender" name="gender" [(ngModel)]="findStudent.gender" [options]="genderOptions"
-          optionLabel="label" optionValue="value" placeholder="Cins seçin" required #gender="ngModel"></p-select>
+          optionLabel="label" optionValue="value" required #gender="ngModel"></p-select>
         <label for="gender">Cins</label>
         <small class="text-red-500 flex" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
           Cins seçilməlidir.

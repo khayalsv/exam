@@ -35,18 +35,18 @@ export class Layout {
   ngOnInit() {
     this.items = [
       {
-        label: 'Exam',
+        label: 'İmtahanlar',
         icon: 'pi pi-file-edit',
         routerLink: ['/'],
       },
       {
-        label: 'Student',
+        label: 'Şagirdlər',
         icon: 'pi pi-address-book',
         routerLink: ['/student'],
       },
       {
-        label: 'Subject',
-        icon: 'pi pi-pen-to-square',
+        label: 'Fənnlər',
+        icon: 'pi pi-book',
         routerLink: ['/subject'],
       },
     ];
