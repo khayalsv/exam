@@ -19,7 +19,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     DrawerModule, ButtonModule, CommonModule, FormsModule,
     RouterOutlet, ToastModule, RippleModule,
-    AvatarModule, StyleClassModule,
     ToolbarModule, MenuModule, DividerModule, ToggleButtonModule],
   templateUrl: './layout.html',
 })

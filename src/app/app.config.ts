@@ -7,6 +7,7 @@ import { MyPreset } from './mypreset';
 import { provideHttpClient } from '@angular/common/http';
 
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
+import { MessageService } from 'primeng/api';
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export const appConfig: ApplicationConfig = {
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(),
+    MessageService,
     providePrimeNG({
       theme: {
         preset: MyPreset,

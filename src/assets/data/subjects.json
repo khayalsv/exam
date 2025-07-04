@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "code": "MAT",
     "name": "Riyaziyyat",
     "schoolClass": 10,
@@ -8,7 +7,6 @@
     "teacherLastName": "Quliyev"
   },
   {
-    "id": 2,
     "code": "AZD",
     "name": "Azərbaycan Dili",
     "schoolClass": 10,
@@ -16,7 +14,6 @@
     "teacherLastName": "Məmmədova"
   },
   {
-    "id": 3,
     "code": "FIZ",
     "name": "Fizika",
     "schoolClass": 11,
@@ -24,7 +21,6 @@
     "teacherLastName": "Əliyev"
   },
   {
-    "id": 4,
     "code": "KIM",
     "name": "Kimya",
     "schoolClass": 9,
@@ -32,7 +28,6 @@
     "teacherLastName": "Həsənova"
   },
   {
-    "id": 5,
     "code": "BIO",
     "name": "Biologiya",
     "schoolClass": 11,
@@ -40,7 +35,6 @@
     "teacherLastName": "Qasımova"
   },
   {
-    "id": 6,
     "code": "TAR",
     "name": "Tarix",
     "schoolClass": 9,
@@ -48,7 +42,6 @@
     "teacherLastName": "Səlimov"
   },
   {
-    "id": 7,
     "code": "COG",
     "name": "Coğrafiya",
     "schoolClass": 10,
@@ -56,7 +49,6 @@
     "teacherLastName": "Əsədova"
   },
   {
-    "id": 8,
     "code": "ING",
     "name": "İngilis Dili",
     "schoolClass": 11,
