@@ -1,17 +1,92 @@
 [
-  { "studentId": 10001, "studentName": "Nihat Hüseynov", "subjectName": "Riyaziyyat", "subjectCode": "MAT", "examDate": "2024-05-15", "grade": 5 },
-  { "studentId": 10002, "studentName": "Aysel Quliyeva", "subjectName": "Azərbaycan Dili", "subjectCode": "AZD", "examDate": "2024-05-18", "grade": 4 },
-  { "studentId": 10003, "studentName": "Kamran Məmmədov", "subjectName": "Fizika", "subjectCode": "FIZ", "examDate": "2024-05-20", "grade": 2 },
-  { "studentId": 10004, "studentName": "Nigar Əliyeva", "subjectName": "Kimya", "subjectCode": "KIM", "examDate": "2024-05-22", "grade": 3 },
-  { "studentId": 10005, "studentName": "Elçin Rəhimli", "subjectName": "Biologiya", "subjectCode": "BIO", "examDate": "2024-05-24", "grade": 5 },
-  { "studentId": 10006, "studentName": "Zəhra Salamova", "subjectName": "Tarix", "subjectCode": "TAR", "examDate": "2024-05-26", "grade": 4 },
-  { "studentId": 10007, "studentName": "Murad Kazımov", "subjectName": "Coğrafiya", "subjectCode": "COG", "examDate": "2024-05-28", "grade": 3 },
-  { "studentId": 10008, "studentName": "Fatimə Əlizadə", "subjectName": "İngilis Dili", "subjectCode": "ING", "examDate": "2024-05-30", "grade": 2 },
-  { "studentId": 10009, "studentName": "Tunar Rüstəmli", "subjectName": "Fizika", "subjectCode": "FIZ", "examDate": "2024-06-01", "grade": 5 },
-  { "studentId": 10010, "studentName": "Lalə Qasımova", "subjectName": "Riyaziyyat", "subjectCode": "MAT", "examDate": "2024-06-03", "grade": 4 },
-  { "studentId": 10011, "studentName": "Vüsal Mehdiyev", "subjectName": "Azərbaycan Dili", "subjectCode": "AZD", "examDate": "2024-06-05", "grade": 3 },
-  { "studentId": 10012, "studentName": "Aynur İsmayılova", "subjectName": "Kimya", "subjectCode": "KIM", "examDate": "2024-06-07", "grade": 2 },
-  { "studentId": 10001, "studentName": "Nihat Hüseynov", "subjectName": "Tarix", "subjectCode": "TAR", "examDate": "2024-06-09", "grade": 5 },
-  { "studentId": 10003, "studentName": "Kamran Məmmədov", "subjectName": "Biologiya", "subjectCode": "BIO", "examDate": "2024-06-11", "grade": 3 },
-  { "studentId": 10002, "studentName": "Aysel Quliyeva", "subjectName": "İngilis Dili", "subjectCode": "ING", "examDate": "2024-06-13", "grade": 4 }
+  {
+    "studentId": 10001,
+    "subjectCode": "MAT",
+    "examDate": "2024-05-15",
+    "grade": 5
+  },
+  {
+    "studentId": 10002,
+    "subjectCode": "AZD",
+    "examDate": "2024-05-18",
+    "grade": 4
+  },
+  {
+    "studentId": 10003,
+    "subjectCode": "FIZ",
+    "examDate": "2024-05-20",
+    "grade": 2
+  },
+  {
+    "studentId": 10004,
+    "subjectCode": "KIM",
+    "examDate": "2024-05-22",
+    "grade": 3
+  },
+  {
+    "studentId": 10005,
+    "subjectCode": "BIO",
+    "examDate": "2024-05-24",
+    "grade": 5
+  },
+  {
+    "studentId": 10006,
+    "subjectCode": "TAR",
+    "examDate": "2024-05-26",
+    "grade": 4
+  },
+  {
+    "studentId": 10007,
+    "subjectCode": "COG",
+    "examDate": "2024-05-28",
+    "grade": 3
+  },
+  {
+    "studentId": 10008,
+    "subjectCode": "ING",
+    "examDate": "2024-05-30",
+    "grade": 2
+  },
+  {
+    "studentId": 10009,
+    "subjectCode": "FIZ",
+    "examDate": "2024-06-01",
+    "grade": 5
+  },
+  {
+    "studentId": 10010,
+    "subjectCode": "MAT",
+    "examDate": "2024-06-03",
+    "grade": 4
+  },
+  {
+    "studentId": 10011,
+    "subjectCode": "AZD",
+    "examDate": "2024-06-05",
+    "grade": 3
+  },
+  {
+    "studentId": 10012,
+    "subjectCode": "KIM",
+    "examDate": "2024-06-07",
+    "grade": 2
+  },
+  {
+    "studentId": 10001,
+    "subjectCode": "TAR",
+    "examDate": "2024-06-09",
+    "grade": 5
+  },
+  {
+    "studentId": 10003,
+    "subjectCode": "BIO",
+    "examDate": "2024-06-11",
+    "grade": 3
+  },
+  {
+    "studentId": 10002,
+    "subjectCode": "ING",
+    "examDate": "2024-06-13",
+    "grade": 4
+  }
 ]
