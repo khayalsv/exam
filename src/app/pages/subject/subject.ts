@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
 import { ColDef, themeQuartz } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
+import { DeleteButtonRendererComponent } from '../../components/delete-button/delete-button';
 
 @Component({
   selector: 'app-subject',
@@ -31,17 +32,25 @@ export class SubjectComponent {
 
   theme = themeQuartz;
 
-  rowData = [
-    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-    { make: "Ford", model: "F-Series", price: 33850, electric: false },
-    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
-  ];
-
   colDefs: ColDef[] = [
+    {
+      headerName: 'Əməliyyat',
+      field: 'actions',
+      cellRenderer: DeleteButtonRendererComponent,
+      cellRendererParams: {
+        onDelete: (data: Subject) => this.onDeleteSubject(data)
+      },
+      width: 100,
+      suppressMovable: true
+    },
     { field: 'code', headerName: 'Fənn Kodu' },
     { field: 'name', headerName: 'Fənn Adı' },
     { field: 'schoolClass', headerName: 'Sinif' },
     { field: 'teacherFirstName', headerName: 'Müəllimin Adı' },
     { field: 'teacherLastName', headerName: 'Müəllimin Soyadı' }
   ];
+
+  onDeleteSubject(subject: Subject) {
+    this.subjects = this.subjects.filter(s => s !== subject);
+  }
 }
