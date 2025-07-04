@@ -17,6 +17,8 @@
 </p-drawer>
 
 <div [ngStyle]="{'margin-left': visible ? '320px' : '0'}">
-  <!-- <p-button (onClick)="onVisible()" icon="pi pi-arrow-right" /> -->
   <router-outlet></router-outlet>
 </div>
+
+
+<!-- <p-toggleButton [(ngModel)]="isDarkMode" onLabel="On" offLabel="Off" (onChange)="toggleDarkMode()" /> -->

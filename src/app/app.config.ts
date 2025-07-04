@@ -3,9 +3,10 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { MyPreset } from './mypreset';
 import { provideHttpClient } from '@angular/common/http';
+
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export const appConfig: ApplicationConfig = {

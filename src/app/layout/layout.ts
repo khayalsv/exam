@@ -52,4 +52,12 @@ export class Layout {
       },
     ];
   }
+
+  // toggleDarkMode() {
+  //   const element = document.querySelector('html');
+  //   if (element) {
+  //     element.classList.toggle('dark');
+  //     localStorage.setItem('theme', element.classList.contains('dark') ? 'true' : 'false');
+  //   }
+  // }
 }
