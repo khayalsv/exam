@@ -12,7 +12,6 @@ import { ExamService } from '../../core/services/exam-service';
     CardModule, CommonModule,
   ],
   templateUrl: './exam.html',
-  styleUrl: './exam.css'
 })
 export class ExamComponent {
   exams: Exam[] = [];

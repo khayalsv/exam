@@ -9,7 +9,6 @@ import { Student } from '../../core/models/Student';
   selector: 'app-student',
   imports: [CommonModule, CardModule, ButtonModule],
   templateUrl: './student.html',
-  styleUrl: './student.css'
 })
 export class StudentComponent {
   students: Student[] = [];

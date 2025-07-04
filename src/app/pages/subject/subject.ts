@@ -9,7 +9,6 @@ import { ButtonModule } from 'primeng/button';
   selector: 'app-subject',
   imports: [CommonModule, CardModule, ButtonModule],
   templateUrl: './subject.html',
-  styleUrl: './subject.css'
 })
 export class SubjectComponent {
   subjects: Subject[] = [];

@@ -22,7 +22,6 @@ import { FormsModule } from '@angular/forms';
     AvatarModule, StyleClassModule,
     ToolbarModule, MenuModule, DividerModule, ToggleButtonModule],
   templateUrl: './layout.html',
-  styleUrl: './layout.css'
 })
 
 export class Layout {
