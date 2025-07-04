@@ -26,5 +26,33 @@
     "schoolClass": 9,
     "teacherFirstName": "Günay",
     "teacherLastName": "Həsənova"
+  },
+  {
+    "code": "BIO",
+    "name": "Biologiya",
+    "schoolClass": 11,
+    "teacherFirstName": "Aygün",
+    "teacherLastName": "Qasımova"
+  },
+  {
+    "code": "TAR",
+    "name": "Tarix",
+    "schoolClass": 9,
+    "teacherFirstName": "Rövşən",
+    "teacherLastName": "Səlimov"
+  },
+  {
+    "code": "COG",
+    "name": "Coğrafiya",
+    "schoolClass": 10,
+    "teacherFirstName": "Sevda",
+    "teacherLastName": "Əsədova"
+  },
+  {
+    "code": "ING",
+    "name": "İngilis Dili",
+    "schoolClass": 11,
+    "teacherFirstName": "Samirə",
+    "teacherLastName": "Əliyeva"
   }
 ]

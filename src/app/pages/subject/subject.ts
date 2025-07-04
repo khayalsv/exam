@@ -6,12 +6,12 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-lesson',
+  selector: 'app-subject',
   imports: [CommonModule, CardModule, ButtonModule],
-  templateUrl: './lesson.html',
-  styleUrl: './lesson.css'
+  templateUrl: './subject.html',
+  styleUrl: './subject.css'
 })
-export class Lesson {
+export class SubjectComponent {
   subjects: Subject[] = [];
 
   constructor(private subjectService: SubjectService) { }

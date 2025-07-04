@@ -1,0 +1,14 @@
+[
+  { "id": 10001, "firstName": "Nihat", "lastName": "Hüseynov", "schoolClass": 10, "gender": "male" },
+  { "id": 10002, "firstName": "Aysel", "lastName": "Quliyeva", "schoolClass": 10, "gender": "female" },
+  { "id": 10003, "firstName": "Kamran", "lastName": "Məmmədov", "schoolClass": 9, "gender": "male" },
+  { "id": 10004, "firstName": "Nigar", "lastName": "Əliyeva", "schoolClass": 9, "gender": "female" },
+  { "id": 10005, "firstName": "Elçin", "lastName": "Rəhimli", "schoolClass": 11, "gender": "male" },
+  { "id": 10006, "firstName": "Zəhra", "lastName": "Salamova", "schoolClass": 11, "gender": "female" },
+  { "id": 10007, "firstName": "Murad", "lastName": "Kazımov", "schoolClass": 10, "gender": "male" },
+  { "id": 10008, "firstName": "Fatimə", "lastName": "Əlizadə", "schoolClass": 11, "gender": "female" },
+  { "id": 10009, "firstName": "Tunar", "lastName": "Rüstəmli", "schoolClass": 9, "gender": "male" },
+  { "id": 10010, "firstName": "Lalə", "lastName": "Qasımova", "schoolClass": 10, "gender": "female" },
+  { "id": 10011, "firstName": "Vüsal", "lastName": "Mehdiyev", "schoolClass": 11, "gender": "male" },
+  { "id": 10012, "firstName": "Aynur", "lastName": "İsmayılova", "schoolClass": 9, "gender": "female" }
+]

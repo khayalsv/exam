@@ -47,9 +47,9 @@ export class Layout {
         routerLink: ['/student'],
       },
       {
-        label: 'Lesson',
+        label: 'Subject',
         icon: 'pi pi-pen-to-square',
-        routerLink: ['/lesson'],
+        routerLink: ['/subject'],
       },
     ];
   }

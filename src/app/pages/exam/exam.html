@@ -1,4 +1,40 @@
-<p-toggleButton [(ngModel)]="isDarkMode" onLabel="On" offLabel="Off" (onChange)="toggleDarkMode()" />
+<section class="p-5">
+  <h3 class="text-xl font-semibold mb-4">📝 İmtahan Nəticələri</h3>
 
-<ag-grid-angular style="width: 100%; height: 500px;" [columnDefs]="colDefs" [rowData]="rowData" [theme]="theme"
-  [sideBar]="true" />
+  <div class="flex flex-wrap gap-4">
+    <p-card *ngFor="let exam of exams" [style]="{
+      width: '16rem',
+      minHeight: '12rem',
+      borderRadius: '10px',
+      padding: '0.5rem',
+      position: 'relative',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+    }">
+      <!-- Qiymət Badge-i -->
+      <div [ngStyle]="{
+        backgroundColor: getGradeColor(exam.grade),
+        color: 'white',
+        padding: '0.2rem 0.6rem',
+        borderRadius: '50px',
+        fontSize: '0.8rem',
+        fontWeight: '600',
+        position: 'absolute',
+        top: '0.75rem',
+        right: '0.75rem'
+      }">
+        Qiymət: {{ exam.grade }}
+      </div>
+
+      <div class="mt-1 text-sm text-gray-600">Tarix: {{ exam.examDate | date: 'dd.MM.yyyy' }}</div>
+
+      <div class="mt-2 text-lg font-semibold text-gray-900">
+        {{ exam.subjectName }} ({{ exam.subjectCode }})
+      </div>
+
+      <div class="mt-2 text-sm text-gray-700">
+        <strong>Şagird:</strong><br />
+        {{ exam.studentName }}
+      </div>
+    </p-card>
+  </div>
+</section>

@@ -1,6 +1,8 @@
 export interface Exam {
-  subjectCode: string;
   studentId: number;
+  studentName: string;
+  subjectName: string;
+  subjectCode: string;
   examDate: Date;
-  score: number;
+  grade: number;
 }

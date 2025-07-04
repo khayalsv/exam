@@ -1,1 +1,32 @@
-<p>student works!</p>
+<section class="p-5">
+  <h3 class="text-xl mb-3">👩‍🎓👨‍🎓 Şagirdlər</h3>
+
+  <div class="flex flex-wrap gap-3">
+    <p-card *ngFor="let student of students" [style]="{
+      width: '13rem',
+      minHeight: '18rem',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+      borderRadius: '10px',
+      padding: '1rem'
+    }">
+      <ng-template #header>
+        <img [src]="student.gender === 'female'
+                ? 'https://cdn-icons-png.flaticon.com/512/3135/3135789.png'
+                : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'" alt="avatar"
+          class="w-6rem h-6rem mx-auto rounded-full mt-2 object-cover" />
+      </ng-template>
+
+      <ng-template #title>
+        <div class="text-center font-medium text-lg">
+          {{ student.firstName }} {{ student.lastName }}
+        </div>
+      </ng-template>
+
+      <ng-template #subtitle>
+        <div class="text-center text-sm text-gray-500">
+          {{ student.schoolClass }}-ci sinif | No: {{ student.id }}
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</section>
