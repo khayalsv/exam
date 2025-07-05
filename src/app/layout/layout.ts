@@ -4,8 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { DrawerModule } from 'primeng/drawer';
 import { RouterOutlet } from '@angular/router';
 import { RippleModule } from 'primeng/ripple';
-import { AvatarModule } from 'primeng/avatar';
-import { StyleClassModule } from 'primeng/styleclass';
+import { Popover } from 'primeng/popover';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MenuModule } from 'primeng/menu';
 import { ToastModule } from 'primeng/toast';
@@ -19,22 +18,29 @@ import { ThemeService } from '../core/services/theme-service';
   selector: 'app-layout',
   imports: [
     DrawerModule, ButtonModule, CommonModule, FormsModule,
-    RouterOutlet, ToastModule, RippleModule,
+    RouterOutlet, ToastModule, RippleModule, Popover,
     ToolbarModule, MenuModule, DividerModule, ToggleButtonModule],
   templateUrl: './layout.html',
 })
 
 export class Layout {
   constructor(private themeService: ThemeService) { }
-  
+
   visible: boolean = true;
   items: MenuItem[] | undefined;
-
+  isMobile: boolean = false;
   onVisible() {
     this.visible = !this.visible;
   }
 
+  checkScreenSize() {
+    this.isMobile = window.innerWidth < 768;
+  }
+
   ngOnInit() {
+
+    this.checkScreenSize();
+    window.addEventListener('resize', this.checkScreenSize.bind(this));
     this.items = [
       {
         label: 'Fənnlər',

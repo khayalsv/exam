@@ -105,17 +105,19 @@ export class StudentComponent {
 
   searchText: string = '';
   filteredStudents() {
-    if (!this.searchText) {
+    const search = this.searchText?.trim().toLowerCase();
+
+    if (!search) {
       return this.students;
     }
 
-    const lower = this.searchText.toLowerCase();
-
-    return this.students.filter(s =>
-      s.firstName.toLowerCase().includes(lower) ||
-      s.lastName.toLowerCase().includes(lower) ||
-      String(s.id).includes(lower) ||
-      String(s.schoolClass).includes(lower)
-    );
+    return this.students.filter(s => {
+      const fullName = `${s.firstName} ${s.lastName}`.toLowerCase();
+      return (
+        fullName.includes(search) ||
+        String(s.id).includes(search) ||
+        String(s.schoolClass).includes(search)
+      );
+    });
   }
 }
