@@ -48,9 +48,9 @@
   <form *ngIf="findExam" #examForm="ngForm" class="mt-3 p-3" (ngSubmit)="onExamSubmit(examForm)">
 
     <!-- İmtahan Tarixi -->
-    <input pSize="small" type="date" id="date" name="date" pInputText [(ngModel)]="findExam.date" required
+    <input pSize="small" type="date" id="examDate" name="examDate" pInputText [(ngModel)]="findExam.examDate" required
       #date="ngModel" />
-    <label for="date">Tarix</label>
+    <label for="examDate">Tarix</label>
     <small class="text-red-500 flex" *ngIf="date.invalid && (date.dirty || date.touched)">
       Tarix seçilməlidir.
     </small>
@@ -67,11 +67,11 @@
 
     <!-- Şagird seçimi -->
     <p-floatlabel class="mb-4" variant="on">
-      <p-select id="id" name="studentId" [options]="students" [(ngModel)]="findExam.studentId"
-        optionLabel="firstName" optionValue="id" required #studentId="ngModel">
+      <p-select id="id" name="firstName" [options]="students" [(ngModel)]="findExam.student" optionLabel="firstName"
+        [filter]="true" required #student="ngModel">
       </p-select>
-      <label for="studentId">Şagird</label>
-      <small class="text-red-500 flex" *ngIf="studentId.invalid && (studentId.dirty || studentId.touched)">
+      <label for="student">Şagird</label>
+      <small class="text-red-500 flex" *ngIf="student.invalid && (student.dirty || student.touched)">
         Şagird seçilməlidir.
       </small>
     </p-floatlabel>

@@ -30,7 +30,7 @@ export class ExamComponent {
   visible = false
 
   constructor(private examService: ExamService, private studentService: StudentService,
-    private subjectService: SubjectService,private messageService:MessageService) { }
+    private subjectService: SubjectService, private messageService: MessageService) { }
 
   ngOnInit() {
     // Bütün tələb olunan sorğuları paralel icra etmək üçün
@@ -98,36 +98,60 @@ export class ExamComponent {
   }
 
   onExamSubmit(examForm: NgForm): void {
-    if (!this.findExam) return;
+  if (!this.findExam) return;
 
-    if (this.findExam.id) {
-      // Mövcud imtahanı yenilə
-      const index = this.exams.findIndex(e => e.id === this.findExam.id);
-      if (index !== -1) {
-        this.exams[index] = { ...this.findExam };
-      }
+  const selectedStudent = this.findExam.student;
 
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Uğurlu əməliyyat',
-        detail: 'İmtahan məlumatı yeniləndi'
-      });
-    } else {
-      // Yeni imtahan əlavə et
-      const newId = this.generateNewId(); // Öz ID generator metodunuz varsa
-      const newExam = { ...this.findExam, id: newId };
-      console.log(newExam,'sssssssssss',this.exams)
-      this.exams.push(newExam);
+  if (!selectedStudent) return;
 
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Uğurlu əməliyyat',
-        detail: 'Yeni imtahan əlavə olundu'
-      });
+  const studentId = selectedStudent.id;
+  const firstName = selectedStudent.firstName;
+  const lastName = selectedStudent.lastName;
+
+  const fullName = `${firstName} ${lastName}`;
+
+  if (this.findExam.id) {
+    // Mövcud imtahanı yenilə
+    const index = this.exams.findIndex(e => e.id === this.findExam.id);
+    if (index !== -1) {
+      this.exams[index] = {
+        ...this.findExam,
+        studentId,
+        studentName: fullName,
+        firstName,
+        lastName
+      };
     }
 
-    examForm.resetForm();
-    this.findExam = null;
-    this.visible = false;
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Uğurlu əməliyyat',
+      detail: 'İmtahan məlumatı yeniləndi'
+    });
+  } else {
+    // Yeni imtahan əlavə et
+    const newId = this.generateNewId();
+
+    const newExam = {
+      ...this.findExam,
+      id: newId,
+      studentId,
+      studentName: fullName,
+      firstName,
+      lastName
+    };
+
+    this.exams.push(newExam);
+
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Uğurlu əməliyyat',
+      detail: 'Yeni imtahan əlavə olundu'
+    });
   }
+
+  examForm.resetForm();
+  this.findExam = null;
+  this.visible = false;
+}
 }
