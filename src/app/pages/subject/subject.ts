@@ -10,14 +10,13 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { DeleteButtonRendererComponent } from '../../components/delete-button/delete-button';
 import { MessageService } from 'primeng/api';
 import { ThemeService } from '../../core/services/theme-service';
+import { Tooltip } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-subject',
-  imports: [CommonModule, CardModule, ButtonModule, Dialog, AgGridAngular],
+  imports: [CommonModule, CardModule, ButtonModule, Dialog, AgGridAngular, Tooltip],
   templateUrl: './subject.html',
 })
-
-
 
 export class SubjectComponent {
   subjects: Subject[] = [];
