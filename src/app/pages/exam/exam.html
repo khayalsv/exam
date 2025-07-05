@@ -28,6 +28,13 @@
         Qiymət: {{ exam.grade }}
       </div>
 
+      <div style="position: absolute; bottom: 0.5rem; right: 0.5rem; display: flex; gap: 0.25rem;">
+        <button pButton icon="pi pi-pencil" class="p-button-sm p-button-info" (click)="onEdit(exam)"
+          aria-label="Redaktə et"></button>
+        <button pButton icon="pi pi-trash" class="p-button-sm p-button-danger" (click)="onDelete(exam.id)"
+          aria-label="Sil"></button>
+      </div>
+
       <div class="mt-1 text-sm text-gray-600">{{ exam.examDate | date: 'dd.MM.yyyy' }}</div>
 
       <div class="mt-2 text-lg font-semibold text-gray-900">
@@ -41,6 +48,7 @@
     </p-card>
   </div>
 </section>
+
 
 <p-dialog header="İmtahan Məlumatı" [(visible)]="visible" [modal]="true" [style]="{ width: '20rem' }"
   [draggable]="false" [resizable]="false">

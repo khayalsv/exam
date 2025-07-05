@@ -103,7 +103,7 @@ export class ExamComponent {
       e.studentId === studentId &&
       e.subjectCode === subjectCode &&
       e.examDate === examDate &&
-      e.id !== this.findExam.id 
+      e.id !== this.findExam.id
     );
 
     if (isDuplicate) {
@@ -157,5 +157,32 @@ export class ExamComponent {
     examForm.resetForm();
     this.findExam = null;
     this.visible = false;
+  }
+
+  onEdit(exam: Exam) {
+    // exam.studentId ilə uyğun student-i tapın
+    const student = this.students.find(s => s.id === exam.studentId);
+
+    this.findExam = {
+      ...exam,
+      student: student ? { ...student } : null
+    };
+
+    this.visible = true;
+  }
+  
+  onDelete(id: number): void {
+    this.exams = this.exams.filter(exam => exam.id !== id);
+
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'Silindi',
+      detail: `ID-si ${id} olan imtahan silindi`
+    });
+
+    if (this.findExam?.id === id) {
+      this.visible = false;
+      this.findExam = null;
+    }
   }
 }
