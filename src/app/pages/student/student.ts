@@ -102,4 +102,20 @@ export class StudentComponent {
       this.findStudent = null;
     }
   }
+
+  searchText: string = '';
+  filteredStudents() {
+    if (!this.searchText) {
+      return this.students;
+    }
+
+    const lower = this.searchText.toLowerCase();
+
+    return this.students.filter(s =>
+      s.firstName.toLowerCase().includes(lower) ||
+      s.lastName.toLowerCase().includes(lower) ||
+      String(s.id).includes(lower) ||
+      String(s.schoolClass).includes(lower)
+    );
+  }
 }

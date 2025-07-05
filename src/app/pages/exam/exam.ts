@@ -116,7 +116,6 @@ export class ExamComponent {
     }
 
     if (this.findExam.id) {
-      // Mövcud imtahanı yenilə
       const index = this.exams.findIndex(e => e.id === this.findExam.id);
       if (index !== -1) {
         this.exams[index] = {
@@ -160,7 +159,6 @@ export class ExamComponent {
   }
 
   onEdit(exam: Exam) {
-    // exam.studentId ilə uyğun student-i tapın
     const student = this.students.find(s => s.id === exam.studentId);
 
     this.findExam = {

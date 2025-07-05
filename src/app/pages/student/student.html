@@ -4,8 +4,12 @@
     <p-button label="Əlavə et" icon="pi pi-plus" size="small" (onClick)="onAdd()" />
   </div>
 
+  <div class="mb-2">
+    <input [(ngModel)]="searchText" pInputText placeholder="Şagirdi axtar..." class="w-30rem" pSize="small" />
+  </div>
+
   <div class="flex flex-wrap gap-3">
-    <p-card *ngFor="let student of students" [style]="{
+    <p-card *ngFor="let student of filteredStudents()" [style]="{
       width: '13rem',
       minHeight: '18rem',
       boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
@@ -53,7 +57,7 @@
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [draggable]="false" [resizable]="false">
 
   <form *ngIf="findStudent" #studentForm="ngForm" (ngSubmit)="onSubmit(studentForm)" class="mt-3 p-3">
-    <!-- Ad -->
+
     <p-floatlabel class="mb-4" variant="on">
       <input pSize="small" id="firstName" name="firstName" pInputText type="text" [(ngModel)]="findStudent.firstName"
         required minlength="3" maxlength="30" #firstName="ngModel" />
@@ -63,7 +67,6 @@
       </small>
     </p-floatlabel>
 
-    <!-- Soyad -->
     <p-floatlabel class="mb-4" variant="on">
       <input pSize="small" id="lastName" name="lastName" pInputText type="text" [(ngModel)]="findStudent.lastName"
         required minlength="3" maxlength="30" #lastName="ngModel" />
@@ -73,29 +76,25 @@
       </small>
     </p-floatlabel>
 
-    <div class="flex gap-1">
-      <p-floatlabel class="mb-4" variant="on">
-        <input pSize="small" id="schoolClass" name="schoolClass" pInputText type="number"
-          [(ngModel)]="findStudent.schoolClass" required min="1" max="11" #schoolClass="ngModel" />
-        <label for="schoolClass">Sinif</label>
-        <small class="text-red-500 flex" *ngIf="schoolClass.invalid && (schoolClass.dirty || schoolClass.touched)">
-          Sinif 1 ilə 11 arasında olmalıdır.
-        </small>
-      </p-floatlabel>
 
-      <!-- Cins -->
-      <p-floatlabel class="mb-2" variant="on">
-        <p-select size="small" id="gender" name="gender" [(ngModel)]="findStudent.gender" [options]="genderOptions"
-          optionLabel="label" optionValue="value" required #gender="ngModel"></p-select>
-        <label for="gender">Cins</label>
-        <small class="text-red-500 flex" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
-          Cins seçilməlidir.
-        </small>
-      </p-floatlabel>
-    </div>
+    <p-floatlabel class="mb-5" variant="on">
+      <p-select size="small" id="gender" name="gender" [(ngModel)]="findStudent.gender" [options]="genderOptions"
+        optionLabel="label" optionValue="value" required #gender="ngModel" class="w-full"></p-select>
+      <label for="gender">Cins</label>
+      <small class="text-red-500 flex" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+        Cins seçilməlidir.
+      </small>
+    </p-floatlabel>
 
+    <p-floatlabel class="mb-4" variant="on">
+      <input pSize="small" id="schoolClass" name="schoolClass" pInputText type="number"
+        [(ngModel)]="findStudent.schoolClass" required min="1" max="11" #schoolClass="ngModel" />
+      <label for="schoolClass">Sinif</label>
+      <small class="text-red-500 flex" *ngIf="schoolClass.invalid && (schoolClass.dirty || schoolClass.touched)">
+        Sinif 1 ilə 11 arasında olmalıdır.
+      </small>
+    </p-floatlabel>
 
-    <!-- Submit düyməsi -->
     <div class="text-right mt-4" variant="on">
       <button pButton type="submit" label="Yadda saxla" class="p-button-sm p-button-success"
         [disabled]="studentForm.invalid">
