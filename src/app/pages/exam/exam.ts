@@ -99,12 +99,11 @@ export class ExamComponent {
     const subjectCode = this.findExam.subjectCode;
     const examDate = this.findExam.examDate;
 
-    // Dublikat yoxlaması (yalnız yeni əlavə edəndə)
     const isDuplicate = this.exams.some(e =>
       e.studentId === studentId &&
       e.subjectCode === subjectCode &&
       e.examDate === examDate &&
-      e.id !== this.findExam.id // redaktə zamanı öz id-sini istisna et
+      e.id !== this.findExam.id 
     );
 
     if (isDuplicate) {
@@ -147,7 +146,7 @@ export class ExamComponent {
       };
 
       this.exams.push(newExam);
-      
+
       this.messageService.add({
         severity: 'success',
         summary: 'Uğurlu əməliyyat',
