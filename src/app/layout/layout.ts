@@ -13,6 +13,7 @@ import { MenuItem } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule } from '@angular/forms';
+import { ThemeService } from '../core/services/theme-service';
 
 @Component({
   selector: 'app-layout',
@@ -24,8 +25,9 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class Layout {
+  constructor(private themeService: ThemeService) { }
+  
   visible: boolean = true;
-  isDarkMode: boolean = false;
   items: MenuItem[] | undefined;
 
   onVisible() {
@@ -35,9 +37,9 @@ export class Layout {
   ngOnInit() {
     this.items = [
       {
-        label: 'İmtahanlar',
-        icon: 'pi pi-file-edit',
-        routerLink: ['/'],
+        label: 'Fənnlər',
+        icon: 'pi pi-book',
+        routerLink: ['/subject'],
       },
       {
         label: 'Şagirdlər',
@@ -45,18 +47,14 @@ export class Layout {
         routerLink: ['/student'],
       },
       {
-        label: 'Fənnlər',
-        icon: 'pi pi-book',
-        routerLink: ['/subject'],
+        label: 'İmtahanlar',
+        icon: 'pi pi-file-edit',
+        routerLink: ['/'],
       },
     ];
   }
 
-  // toggleDarkMode() {
-  //   const element = document.querySelector('html');
-  //   if (element) {
-  //     element.classList.toggle('dark');
-  //     localStorage.setItem('theme', element.classList.contains('dark') ? 'true' : 'false');
-  //   }
-  // }
+  toggleDarkMode() {
+    this.themeService.toggleTheme();
+  }
 }

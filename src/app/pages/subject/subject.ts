@@ -5,36 +5,43 @@ import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
-import { ColDef, themeQuartz } from 'ag-grid-community';
+import { ColDef, colorSchemeDark, themeQuartz } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 import { DeleteButtonRendererComponent } from '../../components/delete-button/delete-button';
 import { MessageService } from 'primeng/api';
+import { ThemeService } from '../../core/services/theme-service';
 
 @Component({
   selector: 'app-subject',
   imports: [CommonModule, CardModule, ButtonModule, Dialog, AgGridAngular],
   templateUrl: './subject.html',
 })
+
+
+
 export class SubjectComponent {
   subjects: Subject[] = [];
   visible: boolean = false;
+  theme = themeQuartz;
 
   constructor(
     private subjectService: SubjectService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private themeService: ThemeService,
   ) { }
 
   ngOnInit() {
     this.subjectService.get().subscribe(data => {
       this.subjects = data;
     });
+
+
+    this.theme = this.themeService.getTheme();
   }
 
   showDialog() {
     this.visible = true;
   }
-
-  theme = themeQuartz;
 
   colDefs: ColDef[] = [
     {
@@ -145,5 +152,6 @@ export class SubjectComponent {
         break;
     }
   }
+
 
 }

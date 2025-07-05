@@ -11,7 +11,7 @@
 
     <div class="p-3 text-center">
       <p-divider />
-
+      <p-toggleButton onLabel="On" offLabel="Off" (onChange)="toggleDarkMode()" />
     </div>
   </ng-template>
 </p-drawer>
@@ -21,4 +21,3 @@
 </div>
 
 <p-toast />
-<!-- <p-toggleButton [(ngModel)]="isDarkMode" onLabel="On" offLabel="Off" (onChange)="toggleDarkMode()" /> -->
