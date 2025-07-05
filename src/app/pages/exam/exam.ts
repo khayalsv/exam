@@ -6,46 +6,68 @@ import { Exam } from '../../core/models/Exam';
 import { ExamService } from '../../core/services/exam-service';
 import { StudentService } from '../../core/services/student-service';
 import { Student } from '../../core/models/Student';
+import { Dialog } from 'primeng/dialog';
+import { FormsModule, NgForm } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { Select } from 'primeng/select';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { SubjectService } from '../../core/services/subject-service';
+import { Subject } from '../../core/models/Subject';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-exam',
-  imports: [ButtonModule,
-    CardModule, CommonModule,
-  ],
+  imports: [CommonModule, CardModule, ButtonModule, Dialog, FormsModule,
+    InputTextModule, Select, FloatLabelModule],
   templateUrl: './exam.html',
 })
 export class ExamComponent {
   exams: Exam[] = [];
   students: Student[] = [];
+  subjectCodes: Subject[] = [];
+  findExam: any;
+  visible = false
 
-  constructor(private examService: ExamService, private studentService: StudentService) { }
+  constructor(private examService: ExamService, private studentService: StudentService,
+    private subjectService: SubjectService,private messageService:MessageService) { }
 
   ngOnInit() {
+    // Bütün tələb olunan sorğuları paralel icra etmək üçün
     this.examService.get().subscribe(exams => {
       this.studentService.get().subscribe(students => {
-        // Student ID-yə görə sürətli axtarış üçün Map düzəldirik
-        const studentMap = new Map<number, any>();
-        students.forEach(student => {
-          studentMap.set(student.id, student);
+        this.subjectService.get().subscribe(subjects => {
+
+          // students array-ə datanı set edirik
+          this.students = students;
+
+          // subjectCodes array-ə datanı set edirik
+          this.subjectCodes = subjects;
+
+          // Student ID-yə görə Map düzəldirik
+          const studentMap = new Map<number, any>();
+          students.forEach(student => {
+            studentMap.set(student.id, student);
+          });
+
+          // Exam-ları enrich edirik
+          this.exams = exams.map(exam => {
+            const student = studentMap.get(exam.studentId);
+
+            return {
+              ...exam,
+              studentName: student ? `${student.firstName} ${student.lastName}` : 'Naməlum',
+              schoolClass: student?.schoolClass,
+              gender: student?.gender
+            };
+          });
+
+          console.log('Birləşdirilmiş Exams:', this.exams);
+          console.log('Students:', this.students);
+          console.log('Subjects:', this.subjectCodes);
         });
-
-        // Exam-ları enrich edirik
-        this.exams = exams.map(exam => {
-          const student = studentMap.get(exam.studentId);
-
-          return {
-            ...exam,
-            studentName: student ? `${student.firstName} ${student.lastName}` : 'Naməlum',
-            schoolClass: student?.schoolClass,
-            gender: student?.gender
-          };
-        });
-
-        console.log('Birləşdirilmiş Exams:', this.exams);
       });
     });
-
   }
 
   getGradeColor(grade: number): string {
@@ -56,5 +78,56 @@ export class ExamComponent {
       case 2: return '#ef4444';
       default: return '#6b7280';
     }
+  }
+
+
+
+  onAdd(): void {
+    this.findExam = {
+      examDate: '',
+      grade: 1,
+      studentId: null,
+      subjectCode: ''
+    };
+    this.visible = true;
+  }
+
+  private generateNewId(): number {
+    const maxId = this.exams.length > 0 ? Math.max(...this.exams.map(s => s.id)) : 0;
+    return maxId + 1;
+  }
+
+  onExamSubmit(examForm: NgForm): void {
+    if (!this.findExam) return;
+
+    if (this.findExam.id) {
+      // Mövcud imtahanı yenilə
+      const index = this.exams.findIndex(e => e.id === this.findExam.id);
+      if (index !== -1) {
+        this.exams[index] = { ...this.findExam };
+      }
+
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Uğurlu əməliyyat',
+        detail: 'İmtahan məlumatı yeniləndi'
+      });
+    } else {
+      // Yeni imtahan əlavə et
+      const newId = this.generateNewId(); // Öz ID generator metodunuz varsa
+      const newExam = { ...this.findExam, id: newId };
+      console.log(newExam,'sssssssssss',this.exams)
+      this.exams.push(newExam);
+
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Uğurlu əməliyyat',
+        detail: 'Yeni imtahan əlavə olundu'
+      });
+    }
+
+    examForm.resetForm();
+    this.findExam = null;
+    this.visible = false;
   }
 }

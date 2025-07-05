@@ -1,4 +1,5 @@
 export interface Exam {
+  id:number;
   studentId: number;
   studentName: string;
   subjectName: string;

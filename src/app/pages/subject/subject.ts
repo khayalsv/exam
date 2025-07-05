@@ -25,7 +25,7 @@ export class SubjectComponent {
   ) { }
 
   ngOnInit() {
-    this.subjectService.getSubjects().subscribe(data => {
+    this.subjectService.get().subscribe(data => {
       this.subjects = data;
     });
   }
